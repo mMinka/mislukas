@@ -1,0 +1,25 @@
+<template name="PassCode">
+
+    <div class="login-container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center m-b-md">
+                    <h3>PLEASE ENTER THE CODE</h3>
+                </div>
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <form action="#" id="loginForm">
+                            <div class="form-group">
+                                <label class="control-label" for="username">we have sent a code to {{ user }}</label>
+                                <input type="text" name='code' placeholder="1234" title="Please enter you code" class="form-control">
+                                {{#if ButtonCode}}
+                                    <button type='submit' class="btn btn-success btn-block">Login</button>
+                                {{/if}}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
