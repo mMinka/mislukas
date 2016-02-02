@@ -16,10 +16,13 @@ Template.Login.events({
       }
     });
 	},
-	'click #facebook-login': function(event) {
+  'click #facebook-login': function(event) {
+    event.preventDefault();
         Meteor.loginWithFacebook({}, function(err){
             if (err) {
                 throw new Meteor.Error("Facebook login failed");
+            }else{
+              FlowRouter.go('home');
             }
         });
     },
