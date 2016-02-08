@@ -1,3 +1,5 @@
+Meteor.subscribe("People");
+
 Template.Login.events({
 	'submit form': function(event){
 		event.preventDefault();
@@ -18,7 +20,7 @@ Template.Login.events({
 	},
   'click #facebook-login': function(event) {
     event.preventDefault();
-        Meteor.loginWithFacebook({}, function(err){
+        Meteor.loginWithFacebook({}, function(err,result){
             if (err) {
                 throw new Meteor.Error("Facebook login failed");
             }else{

@@ -5,6 +5,13 @@ FlowRouter.route('/home', {
   }
 });
 
+FlowRouter.route('/profile', {
+  name: 'Profile', 
+  action(){
+      BlazeLayout.render('ProfileMain',{main:'Profile'});
+  }
+});
+
 FlowRouter.route('/walletsend', {
   name: 'walletsend', 
   action(){
