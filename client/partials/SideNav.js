@@ -1,10 +1,11 @@
+Meteor.subscribe('userData');
 Template.SideNav.onRendered(function() {
 
     // Initialize metsiMenu plugin to sidebar menu
     $('#side-menu').metisMenu();
     
 });
-
+/*
 Template.navigation.events({
 
     // Colapse menu in mobile mode after click on element
@@ -15,3 +16,4 @@ Template.navigation.events({
     }
 
 });
+*/

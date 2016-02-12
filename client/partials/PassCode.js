@@ -6,6 +6,9 @@ Template.PassCode.events({
 		var loginRequest = {user: user, code: code};
 		Meteor.loginWithPasswordless(loginRequest, function(err){
 			if(err){
+				Session.set('ErrorCode','true');
+        		Session.set('ButtonCode',undefined)
+        		$('[name=code]').val('');
 				console.log(err);
 			}else{
 			FlowRouter.go('home');
@@ -32,6 +35,13 @@ Template.PassCode.helpers({
 	},
 	 ButtonCode: function(){
     	return Session.get('ButtonCode');
-  	}
+  	},
+  	errorCode: function(){
+    if(Session.get('ErrorCode')){
+      return Session.get('ErrorCode');
+    }else{
+      return false;
+    }
+  }
 	
 });

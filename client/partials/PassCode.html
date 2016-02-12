@@ -16,6 +16,10 @@
                                     <br>
                                     <button type='submit' class="btn btn-success btn-block">Login</button>
                                 {{/if}}
+                                {{#if errorCode }}
+                                    <br>
+                                    <button disabled="disabled" type='submit' class="btn btn-danger btn-block">Error, por favor intentelo de nuevo</button>
+                                {{/if}}
                             </div>
                         </form>
                     </div>

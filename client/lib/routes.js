@@ -35,13 +35,6 @@ FlowRouter.route('/passcode', {
   }
 });
 
-FlowRouter.route('/register', {
-  name: 'login',
-  action(){
-      BlazeLayout.render('BlankLayout', {main: 'Register'});
-  }
-});
-
 // FlowRouter.route('/blank', {
 //   name: 'blank',
 //   action(){

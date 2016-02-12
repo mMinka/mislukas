@@ -12,9 +12,12 @@
                                 <input type="text" placeholder="Please enter your email" title="Please enter your email" name="user" id="UserInput" class="form-control">
                             </div>
                             {{#if ButtonLogin}}
-                            <button type='submit' class="btn btn-success btn-block">Send Code</button>
+                                <button type='submit' class="btn btn-success btn-block">Send Code</button>
                             {{/if}}
-                            <a id="facebook-login" class="btn btn-primary btn-block"> Login with Facebook</a>
+                                <a id="facebook-login" class="btn btn-primary btn-block"> Login with Facebook</a>
+                            {{#if errorLogin }}
+                                <button disabled="disabled" type='submit' class="btn btn-danger btn-block">Se ha producido un error vuelve a intentarlo</button>
+                            {{/if}}
                         </form>
                     </div>
                 </div>

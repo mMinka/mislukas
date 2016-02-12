@@ -1,4 +1,5 @@
 Meteor.subscribe('people');
+Meteor.subscribe('userData');
 
 Template.Profile.events({
   'submit form': function(e){
@@ -10,12 +11,11 @@ Template.Profile.events({
     var city = $('[name=city]').val();
     var country = $('[name=country]').val();
     Meteor.call('addPeople',email,firstname,lastname,address,city,country);
-    //console.log(people.find());
   }
 });
 
 Template.Profile.helpers({
-  'person': function(){
+  person: function(){
     var currentUser = Meteor.userId();
         return People.find({owner: currentUser});
   }

@@ -52,12 +52,12 @@ if (Meteor.isClient) {
 if(Meteor.isServer) {
 
   Accounts.passwordless.emailTemplates = {
-    from: "mminka.org Accounts <no-reply@mminka.org>",
+    from: "wallet.mislukas.com Accounts <no-reply@mislukas.com>",
     //siteName: Meteor.absoluteUrl().replace(/^https?:\/\//, '').replace(/\/$/, ''),
 
     sendVerificationCode: {
       subject: function (code) {
-        return "Your verification code is " + code + " for www.mminka.org";
+        return "Your verification code is " + code + " for wallet.mislukas.com";
       },
       text: function (user, code) {
         var greeting = (user && user.username) ?

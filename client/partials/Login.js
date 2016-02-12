@@ -6,10 +6,46 @@ Template.Login.events({
     var userInput = $('[name=user]').val();
     console.log(userInput);
     Session.set('user', userInput);
+    var data = JSON.stringify({
+      "from": "InfoSMS",
+      "to": userInput,
+      "text": "Test SMS."
+    });
+      /*
+      $.ajax({
+        type: "POST",
+        url: 'https://api.infobip.com/sms/1/text/single',
+        headers: {
+          "authorization": "Basic UGxheU1pbmsyMTpYbHM4c21zMzQ=",
+          "content-type": "application/json",
+        },
+        data: data,
+        success: function(data){
+          console.log(data.messages);
+        },
+        dataType: 'json'
+      });
+
+      $.ajax({
+        type: "GET",
+        url: 'https://api.infobip.com/sms/1/reports',
+        headers: {
+          "authorization": "Basic UGxheU1pbmsyMTpYbHM4c21zMzQ=",
+          "content-type": "application/json",
+        },
+        //data: data,
+        success: function(data){
+          console.log(data.results);
+        },
+        dataType: 'json'
+      });*/
+      
     
     Meteor.sendVerificationCode(userInput,function(err){
       if(err){
-        console.log('entro en el error')
+        Session.set('ErrorLogin','true');
+        Session.set('ButtonLogin',undefined)
+        $('[name=user]').val('');
         console.log(err);
       }else
       {
@@ -17,6 +53,7 @@ Template.Login.events({
         FlowRouter.go('passcode');
       }
     });
+    
 	},
   'click #facebook-login': function(event) {
     event.preventDefault();
@@ -56,6 +93,13 @@ Template.Login.helpers({
   },
   ButtonLogin: function(){
     return Session.get('ButtonLogin');
+  },
+  errorLogin: function(){
+    if(Session.get('ErrorLogin')){
+      return Session.get('ErrorLogin');
+    }else{
+      return false;
+    }
   }
 });
 
