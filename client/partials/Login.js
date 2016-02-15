@@ -43,14 +43,13 @@ Template.Login.events({
     
     Meteor.sendVerificationCode(userInput,function(err){
       if(err){
-        Session.set('ErrorLogin','true');
+        Bert.alert('Se ha producido un error','danger','fixed-top');
         Session.set('ButtonLogin',undefined);
         $('[name=user]').val('');
         console.log(err);
       }else
       {
         Session.set('ButtonLogin',undefined);
-        Session.set('ErrorLogin',undefined);
         FlowRouter.go('passcode');
       }
     });
@@ -61,6 +60,7 @@ Template.Login.events({
         Meteor.loginWithFacebook({}, function(err,result){
             if (err) {
                 throw new Meteor.Error("Facebook login failed");
+                Bert.alert('Se ha producido un error','danger','fixed-top');
             }else{
               var _iduser = Meteor.userId();
               var profile = People.findOne({'owner': _iduser});

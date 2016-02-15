@@ -9,13 +9,12 @@ Template.PassCode.events({
 		var loginRequest = {user: user, code: code};
 		Meteor.loginWithPasswordless(loginRequest, function(err){
 			if(err){
-				Session.set('ErrorCode','true');
+				Bert.alert('Se ha producido un error vuelve a intentarlo','danger','fixed-top');
         		Session.set('ButtonCode',undefined)
         		$('[name=code]').val('');
 				console.log(err);
 			}else{
 				Session.set('ButtonCode',undefined);
-				Session.set('ErrorCode',undefined);
 				var _iduser = Meteor.userId();
 				var profile = People.findOne({'owner': _iduser});
 				if(profile){
@@ -23,7 +22,6 @@ Template.PassCode.events({
 				}else{
 					FlowRouter.go('settings');
 				}
-				//FlowRouter.go('home');
 			}
 		})
 	},
