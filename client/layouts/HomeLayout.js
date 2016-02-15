@@ -1,3 +1,5 @@
+
+
 Template.HomeLayout.onRendered(function(){
 
     // Add special class to minimalize page elements when screen is less than 768px

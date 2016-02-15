@@ -28,6 +28,13 @@ FlowRouter.route('/', {
   }
 });
 
+FlowRouter.route('/settings', {
+  name: 'settings',
+  action(){
+      BlazeLayout.render('BlankLayout', {main: 'Settings'});
+  }
+});
+
 FlowRouter.route('/passcode', {
   name: 'passcode',
   action(){

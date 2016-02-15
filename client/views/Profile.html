@@ -11,30 +11,33 @@
                         </div>
                         <div class="panel-body">
                             <form action='' method=''>
-                                
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Email</label>
-                                    <input type="email" class="form-control" id="exampleInputPassword1" placeholder="{{ person.addres.address1 }}" name='email'>
+                                    <input type="email" class="form-control" id="exampleInputPassword1" value="{{person.email}}" name='email'>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Phone</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" value="{{person.phone}}" name='phone'>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">First Name</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="First Name" name='firstname'>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" value="{{person.firstname}}" name='firstname'>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Last Name</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Last Name" name='lastname'>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" value="{{person.lastname}}" name='lastname'>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Address</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Address" name='address'>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" value="{{person.address1}}" name='address'>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">City</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="City" name='city'>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" value="{{person.city}}" name='city'>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Country</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Country" name='country'>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" value="{{person.country}}" name='country'>
                                 </div>
                                 <button type="submit" class="btn btn-default">Submit</button>
                                 

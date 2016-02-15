@@ -1,3 +1,6 @@
+Meteor.subscribe('people');
+Meteor.subscribe('userData');
+
 Template.PassCode.events({
 	'submit form': function(e){
 		e.preventDefault();
@@ -11,7 +14,16 @@ Template.PassCode.events({
         		$('[name=code]').val('');
 				console.log(err);
 			}else{
-			FlowRouter.go('home');
+				Session.set('ButtonCode',undefined);
+				Session.set('ErrorCode',undefined);
+				var _iduser = Meteor.userId();
+				var profile = People.findOne({'owner': _iduser});
+				if(profile){
+					FlowRouter.go('home');
+				}else{
+					FlowRouter.go('settings');
+				}
+				//FlowRouter.go('home');
 			}
 		})
 	},

@@ -44,12 +44,13 @@ Template.Login.events({
     Meteor.sendVerificationCode(userInput,function(err){
       if(err){
         Session.set('ErrorLogin','true');
-        Session.set('ButtonLogin',undefined)
+        Session.set('ButtonLogin',undefined);
         $('[name=user]').val('');
         console.log(err);
       }else
       {
-        console.log('se envio el correo');
+        Session.set('ButtonLogin',undefined);
+        Session.set('ErrorLogin',undefined);
         FlowRouter.go('passcode');
       }
     });
@@ -61,7 +62,13 @@ Template.Login.events({
             if (err) {
                 throw new Meteor.Error("Facebook login failed");
             }else{
-              FlowRouter.go('home');
+              var _iduser = Meteor.userId();
+              var profile = People.findOne({'owner': _iduser});
+              if(profile){
+                FlowRouter.go('home');
+              }else{
+                FlowRouter.go('settings');
+              }
             }
         });
     },

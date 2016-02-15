@@ -5,4 +5,5 @@ Meteor.startup(function(){
     var port = 2525;
 
     process.env.MAIL_URL = "smtp://" + login + ":" + password + "@" + domain + ":" + port;
+
 });
