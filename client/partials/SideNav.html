@@ -3,9 +3,19 @@
         <div id="navigation">
             <div class="profile-picture">
                 <a href="#">
-                    <img src="/images/home-avatar.png" class="img-circle m-b" alt="logo">
+                {{#if avatar}}
+                    {{#each avatar}}
+                    <img src="{{this.url}}" class="img-circle img-responsive" alt="logo">
+                    {{/each}}
+                {{else}}
+                    {{#if user.services.facebook}}
+                        <img scr="{{currentUser.profile.picture}}" alt="{{currentUser.username}}">
+                    {{else}}
+                        <img src="/images/home-avatar.png" class="img-circle m-b" alt="logo">
+                    {{/if}}
+                {{/if}}
                 </a>
-
+                <br>
                 <div class="stats-label text-color">
                     <span class="font-extra-bold font-uppercase">{{person.firstname}}</span>
                 </div>

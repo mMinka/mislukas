@@ -1,5 +1,6 @@
 Meteor.subscribe('userData');
 Meteor.subscribe("People");
+Meteor.subscribe("images");
 
 Template.SideNav.onRendered(function() {
 
@@ -12,6 +13,10 @@ Template.SideNav.helpers({
   'person': function(){
     var currentUser = Meteor.userId();
         return People.findOne({"owner": currentUser});
+  },
+  'avatar': function(){
+    var imageId = Meteor.user().profile.image;
+    return Images.find({_id: imageId});
   }
 });
 
