@@ -4,43 +4,17 @@ Template.Login.events({
 	'submit form': function(event){
 		event.preventDefault();
     var userInput = $('[name=user]').val();
-    console.log(userInput);
+    var digito1 = userInput.charAt(0);
+    var digito2 = userInput.charAt(1);
+    if(digito1 != 5 && digito2 != 7){
+      if(digito1 != 3){
+        Bert.alert('El numero esta mal, intentalo de nuevo','danger','fixed-top');
+        $('[name=user]').val('');
+      }else{
+        userInput = "57"+userInput;
+      }
+    }
     Session.set('user', userInput);
-    var data = JSON.stringify({
-      "from": "InfoSMS",
-      "to": userInput,
-      "text": "Test SMS."
-    });
-      /*
-      $.ajax({
-        type: "POST",
-        url: 'https://api.infobip.com/sms/1/text/single',
-        headers: {
-          "authorization": "Basic UGxheU1pbmsyMTpYbHM4c21zMzQ=",
-          "content-type": "application/json",
-        },
-        data: data,
-        success: function(data){
-          console.log(data.messages);
-        },
-        dataType: 'json'
-      });
-
-      $.ajax({
-        type: "GET",
-        url: 'https://api.infobip.com/sms/1/reports',
-        headers: {
-          "authorization": "Basic UGxheU1pbmsyMTpYbHM4c21zMzQ=",
-          "content-type": "application/json",
-        },
-        //data: data,
-        success: function(data){
-          console.log(data.results);
-        },
-        dataType: 'json'
-      });*/
-      
-    
     Meteor.sendVerificationCode(userInput,function(err){
       if(err){
         Bert.alert('Se ha producido un error','danger','fixed-top');
@@ -50,10 +24,10 @@ Template.Login.events({
       }else
       {
         Session.set('ButtonLogin',undefined);
+        console.log(userInput);
         FlowRouter.go('passcode');
       }
     });
-    
 	},
   'click #facebook-login': function(event) {
     event.preventDefault();
@@ -74,18 +48,18 @@ Template.Login.events({
     },
   'keyup input[type=text]': function(event){
     var userInput = $('[name=user]').val();
-    if(userInput.indexOf("@") == -1){
-      Session.set('ButtonLogin',undefined)
+    if(!isNaN(userInput) && userInput.length == 10 || userInput.length == 12){
+      Session.set('ButtonLogin','true')
     }else{
-      Session.set('ButtonLogin','true');
+      Session.set('ButtonLogin',undefined);
     }
   },
   'change input[type=text]': function(event){
     var userInput = $('[name=user]').val();
-    if(userInput.indexOf("@") == -1){
-      Session.set('ButtonLogin',undefined)
+    if(!isNaN(userInput) && userInput.length == 10){
+      Session.set('ButtonLogin','true')
     }else{
-      Session.set('ButtonLogin','true');
+      Session.set('ButtonLogin',undefined);
     }
   }
 });

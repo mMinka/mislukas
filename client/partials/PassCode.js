@@ -5,13 +5,11 @@ Template.PassCode.events({
 	'submit form': function(e){
 		e.preventDefault();
 		var code = $('[name=code]').val();
-		var user = Session.get('user');
-		var loginRequest = {user: user, code: code};
-		Meteor.loginWithPasswordless(loginRequest, function(err){
+		var phone = Session.get('user');
+		//console.log(user);
+		var loginRequest = {phone: phone, code: code};
+		Meteor.loginWithSms(loginRequest,function(err,result){
 			if(err){
-				Bert.alert('Se ha producido un error vuelve a intentarlo','danger','fixed-top');
-        		Session.set('ButtonCode',undefined)
-        		$('[name=code]').val('');
 				console.log(err);
 			}else{
 				Session.set('ButtonCode',undefined);

@@ -8,14 +8,23 @@
                 <div class="hpanel">
                     <div class="panel-body">
                         <form action="" method='' id="loginForm">
+                            {{#if currentUser.services.facebook}}
                             <div class="form-group">
-                                <input type="text" placeholder="Please enter your firstname" title="Please enter your firstname" name="firstname" id="UserInput" class="form-control">
+                                <input type="text" placeholder="Ingrese su nombre" value="{{currentUser.services.facebook.first_name}}" title="Please enter your firstname" name="firstname" id="UserInput" class="form-control">
                             </div>
                             <div class="form-group">
-                                <input type="text" placeholder="Please enter your lastname" title="Please enter your lastname" name="lastname" id="UserInput" class="form-control">
+                                <input type="text" placeholder="Ingrese su apellido" value="{{currentUser.services.facebook.last_name}}" title="Please enter your lastname" name="lastname" id="UserInput" class="form-control">
+                            </div>
+                            {{else}}
+                            <div class="form-group">
+                                <input type="text" placeholder="Ingrese su nombre" title="Please enter your firstname" name="firstname" id="UserInput" class="form-control">
                             </div>
                             <div class="form-group">
-                                <input type="text" placeholder="Please enter your phone" title="Please enter your phone" name="channel" id="UserInput" class="form-control">
+                                <input type="text" placeholder="Ingrese su apellido" title="Please enter your lastname" name="lastname" id="UserInput" class="form-control">
+                            </div>
+                            {{/if}}
+                            <div class="form-group">
+                                <input type="text" placeholder="Ingrese su correo" title="Please enter your phone" name="channel" id="UserInput" class="form-control">
                             </div>
                             <button type='submit' class="btn btn-success btn-block">Submit</button>
                         </form>

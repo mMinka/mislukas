@@ -4,7 +4,6 @@ accounts-oauth@1.1.8
 accounts-password@1.1.4
 accounts-ui@1.1.6
 accounts-ui-unstyled@1.1.8
-acemtp:accounts-passwordless@0.2.3
 aldeed:autoform@5.8.1
 aldeed:collection2@2.8.0
 aldeed:collection2-core@1.0.0
@@ -51,6 +50,8 @@ ddp-rate-limiter@1.0.0
 ddp-server@1.2.2
 deps@1.0.9
 diff-sequence@1.0.1
+dispatch:accounts-sms@1.0.1
+dispatch:twilio@1.0.3
 ecmascript@0.1.6
 ecmascript-runtime@0.2.6
 ejson@1.0.7

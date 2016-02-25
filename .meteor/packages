@@ -38,7 +38,6 @@ fortawesome:fontawesome
 #add passwordless 
 email
 accounts-base
-acemtp:accounts-passwordless
 accounts-facebook
 service-configuration
 http
@@ -46,3 +45,4 @@ themeteorchef:bert
 kevohagan:sweetalert
 cfs:standard-packages
 cfs:gridfs
+dispatch:accounts-sms

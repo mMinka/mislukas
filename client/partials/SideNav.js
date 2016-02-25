@@ -16,7 +16,20 @@ Template.SideNav.helpers({
   },
   'avatar': function(){
     var imageId = Meteor.user().profile.image;
-    return Images.find({_id: imageId});
+    if(imageId){
+      return Images.find({_id: imageId});
+    }else{
+      return '';
+    }
+  },
+  userPicHelper: function() {
+    if(Meteor.user().services.facebook){
+      var id = Meteor.user().services.facebook.id;
+      var img = 'http://graph.facebook.com/' + id + '/picture?type=square&height=160&width=160';
+      return img;
+    }else{
+      return '';
+    }
   }
 });
 
