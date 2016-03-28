@@ -2,16 +2,30 @@ Meteor.subscribe("People");
 
 Template.Login.events({
 	'submit form': function(event){
-		event.preventDefault();
+    console.log(event.which);
+    if(event.which == 13){
+        return;
+    }
+    event.preventDefault();
     var userInput = $('[name=user]').val();
     var digito1 = userInput.charAt(0);
     var digito2 = userInput.charAt(1);
-    if(digito1 != 5 && digito2 != 7){
-      if(digito1 != 3){
+    if(userInput.length == 12){
+      if(digito1 != 5 || digito2 != 7){
         Bert.alert('El numero esta mal, intentalo de nuevo','danger','fixed-top');
-        $('[name=user]').val('');
+        return;
+      }
+    }else{
+      if(userInput.length == 10){
+        if(digito1 != 3){
+          Bert.alert('El numero esta mal, intentalo de nuevo','danger','fixed-top');
+          return;
+        }else{
+          userInput = "57"+userInput;
+        }
       }else{
-        userInput = "57"+userInput;
+        Bert.alert('El numero esta mal, intentalo de nuevo','danger','fixed-top');
+        return;
       }
     }
     Session.set('user', userInput);
@@ -47,19 +61,30 @@ Template.Login.events({
         });
     },
   'keyup input[type=text]': function(event){
-    var userInput = $('[name=user]').val();
-    if(!isNaN(userInput) && userInput.length == 10 || userInput.length == 12){
-      Session.set('ButtonLogin','true')
-    }else{
-      Session.set('ButtonLogin',undefined);
+    console.log(event.which);
+    if(event.which == 13){
+      console.log(event.which);
+        return;
+    } else {
+      var userInput = $('[name=user]').val();
+      if(!isNaN(userInput) && userInput.length == 10 || userInput.length == 12){
+        Session.set('ButtonLogin','true')
+      }else{
+        Session.set('ButtonLogin',undefined);
+      }   
     }
   },
   'change input[type=text]': function(event){
-    var userInput = $('[name=user]').val();
-    if(!isNaN(userInput) && userInput.length == 10){
-      Session.set('ButtonLogin','true')
-    }else{
-      Session.set('ButtonLogin',undefined);
+    console.log(event.which);
+    if(event.which == 13){
+        return;
+    } else {
+      var userInput = $('[name=user]').val();
+      if(!isNaN(userInput) && userInput.length == 10){
+        Session.set('ButtonLogin','true')
+      }else{
+        Session.set('ButtonLogin',undefined);
+      }
     }
   }
 });

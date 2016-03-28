@@ -16,28 +16,28 @@ Template.WalletSend.events({
           			return;
         		}else{
           			channel = "57"+channel;
-        		}	
+        		}
       		}
 		}
-		swal({   
-			title: "Estas seguro?",   
-			text: "Quieres enviar el mensaje?",   
-			type: "info",   
-			showCancelButton: true,   
-			confirmButtonColor: "#5cb85c",   
-			confirmButtonText: "Si, enviar!",   
-			cancelButtonText: "No, cancelar!",   
-			closeOnConfirm: true,   
-			closeOnCancel: false }, 
+		swal({
+			title: "Estas seguro?",
+			text: "Quieres enviar el mensaje?",
+			type: "info",
+			showCancelButton: true,
+			confirmButtonColor: "#5cb85c",
+			confirmButtonText: "Si, enviar!",
+			cancelButtonText: "No, cancelar!",
+			closeOnConfirm: true,
+			closeOnCancel: false },
 			function(isConfirm){
 			   if (isConfirm){
 			   	Meteor.call('SendSMS',valor,channel,text,tipo);
-			   	$('[name=monto]').val(''); 
-			   	$('[name=channel]').val('');   
-			   	$('[name=text]').val('');   
-			}else{     
-				swal("Cancelado", "El mensaje no fue enviado :)", "error");   
-			} 
+			   	$('[name=monto]').val('');
+			   	$('[name=channel]').val('');
+			   	$('[name=text]').val('');
+			}else{
+				swal("Cancelado", "El mensaje no fue enviado :)", "error");
+			}
 		});
 	},
 	'click #enviar': function(event){
@@ -56,28 +56,28 @@ Template.WalletSend.events({
           			return;
         		}else{
           			channel = "57"+channel;
-        		}	
+        		}
       		}
-      		console.log(channel)	
+      		console.log(channel)
 		}
-		swal({   
-			title: "Estas seguro?",   
-			text: "Quieres enviar el mensaje?",   
-			type: "info",   
-			showCancelButton: true,   
-			confirmButtonColor: "#5cb85c",   
-			confirmButtonText: "Si, enviar!",   
-			cancelButtonText: "No, cancelar!",   
-			closeOnConfirm: true,   
-			closeOnCancel: false }, 
+		swal({
+			title: "Estas seguro?",
+			text: "Quieres enviar el mensaje?",
+			type: "info",
+			showCancelButton: true,
+			confirmButtonColor: "#5cb85c",
+			confirmButtonText: "Si, enviar!",
+			cancelButtonText: "No, cancelar!",
+			closeOnConfirm: true,
+			closeOnCancel: false },
 			function(isConfirm){
 				if (isConfirm){
 				   	Meteor.call('SendSMS',valor,channel,text,tipo);
-				   	$('[name=monto]').val(''); 
-				   	$('[name=channel]').val('');   
-				   	$('[name=text]').val('');   
-				}else{     
-					swal("Cancelado", "El mensaje no fue enviado :)", "error");   
+				   	$('[name=monto]').val('');
+				   	$('[name=channel]').val('');
+				   	$('[name=text]').val('');
+				}else{
+					swal("Cancelado", "El mensaje no fue enviado :)", "error");
 				}
 		});
 	}

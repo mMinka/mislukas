@@ -28,6 +28,13 @@ FlowRouter.route('/', {
   }
 });
 
+FlowRouter.route('/store', {
+  name: 'store',
+  action(){
+      BlazeLayout.render('BlankLayout', {main: 'Store'});
+  }
+});
+
 FlowRouter.route('/settings', {
   name: 'settings',
   action(){

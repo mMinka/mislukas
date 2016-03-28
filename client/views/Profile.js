@@ -13,6 +13,28 @@ Template.Profile.events({
     var city = $('[name=city]').val();
     var country = $('[name=country]').val();
     var usuarioID = Meteor.userId();
+    var digito1 = phone.charAt(0);
+    var digito2 = phone.charAt(1);
+    console.log(digito1);
+    console.log(digito2);
+    if(phone.length == 12){
+      if(digito1 != 5 || digito2 != 7){
+        Bert.alert('El numero esta mal, intentalo de nuevo','danger','fixed-top');
+        return;
+      }
+    }else{
+      if(phone.length == 10){
+        if(digito1 != 3){
+          Bert.alert('El numero esta mal, intentalo de nuevo','danger','fixed-top');
+          return;
+        }else{
+          phone = "57"+phone;
+        }
+      }else{
+        Bert.alert('El numero esta mal, intentalo de nuevo','danger','fixed-top');
+        return;
+      }
+    }
     Meteor.call('updatePeople',email,phone,firstname,lastname,address,city,country,usuarioID);
   },
   "change .file": function(event, template) {

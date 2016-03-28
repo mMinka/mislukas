@@ -6,8 +6,9 @@ Meteor.startup(function(){
 
     process.env.MAIL_URL = "smtp://" + login + ":" + password + "@" + domain + ":" + port;
 
+/*
     Meteor.users.remove({});
     People.remove({});
-    Images.remove({});
+    Images.remove({});*/
 
 });
