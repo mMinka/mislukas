@@ -1,9 +1,16 @@
 <template name="Profile">
     <div class="content">
         <div class="row">
-            <div class="col-md-6">
-                <div class="">
-                    <div class="hpanel horange">
+            <div class="col-lg-4">
+                <div class="hpanel hgreen">
+                   <div class="panel-heading">
+                        <div class="panel-tools">
+                            <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                            <a class="closebox"><i class="fa fa-times"></i></a>
+                        </div>
+                        Datos de {{person.firstname}} {{person.lastname}}
+                    </div>
+
                         <form action='' method=''>
                             <div class="panel-body col-md-5">
                                 <div class="form-group">
@@ -45,10 +52,10 @@
                                 <button type="submit" class="btn btn-default">Submit</button>
                             </div>
                         </form>
-                    </div>
                 </div>
             </div>
 
         </div>
     </div>
+    
 </template>
