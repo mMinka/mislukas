@@ -1,4 +1,6 @@
 
+
+
 Template.WalletSend.events({
 	'click #pedir': function(event){
 		event.preventDefault();
@@ -45,7 +47,7 @@ Template.WalletSend.events({
 		var valor = $('[name=monto]').val();
 		var channel = $('[name=channel]').val();
 		var text = $('[name=text]').val();
-		var tipo = 'Te enviaron '+ valor +' luk';
+		var tipo = 'Has enviado '+ valor +' luk';
 		if(!isNaN(channel)){
 			var digito1 = channel.charAt(0);
       		var digito2 = channel.charAt(1);
@@ -58,7 +60,6 @@ Template.WalletSend.events({
           			channel = "57"+channel;
         		}
       		}
-      		console.log(channel)
 		}
 		swal({
 			title: "Estas seguro?",
@@ -83,3 +84,24 @@ Template.WalletSend.events({
 	}
 });
 
+Template.WalletSend.helpers({
+  balance: function(){
+    var currentUser = Meteor.userId();
+    var apiUrl = "http://api.minka.io:8081/api/person/meteor/"+currentUser;
+    HTTP.call( 'GET', apiUrl, {}, function( error, response ) {
+		  if ( error ) {
+		    console.log( error );
+		  } else {
+				var balanceUrl = "http://45.55.14.10:8080/address/"+response.data.wallet.address+"/balance";
+				HTTP.call( 'GET', balanceUrl, {}, function( error, response ) {
+				  if ( error ) {
+				    console.log( error );
+				  } else {
+				    Session.set("datos",response.data.data.balance);
+				  }
+				});
+		  }
+		});
+    return Session.get("datos")
+  }
+});

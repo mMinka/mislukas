@@ -6,13 +6,21 @@ Template.SideNav.onRendered(function() {
 
     // Initialize metsiMenu plugin to sidebar menu
     $('#side-menu').metisMenu();
-    
+
 });
 
 Template.SideNav.helpers({
-  'person': function(){
+  name: function(){
     var currentUser = Meteor.userId();
-        return People.findOne({"owner": currentUser});
+    var apiUrl = "http://api.minka.io:8081/api/person/meteor/"+currentUser;
+    HTTP.call( 'GET', apiUrl, {}, function( error, response ) {
+		  if ( error ) {
+		    console.log( error );
+		  } else {
+		    Session.set("datos",response.data);
+		  }
+		});
+    return Session.get("datos")
   },
   'avatar': function(){
     var imageId = Meteor.user().profile.image;

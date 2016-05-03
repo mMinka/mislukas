@@ -2,10 +2,6 @@ Meteor.subscribe("People");
 
 Template.Login.events({
 	'submit form': function(event){
-    console.log(event.which);
-    if(event.which == 13){
-        return;
-    }
     event.preventDefault();
     var userInput = $('[name=user]').val();
     var digito1 = userInput.charAt(0);
@@ -61,7 +57,6 @@ Template.Login.events({
         });
     },
   'keyup input[type=text]': function(event){
-    console.log(event.which);
     if(event.which == 13){
       console.log(event.which);
         return;
@@ -71,7 +66,7 @@ Template.Login.events({
         Session.set('ButtonLogin','true')
       }else{
         Session.set('ButtonLogin',undefined);
-      }   
+      }
     }
   },
   'change input[type=text]': function(event){
@@ -108,6 +103,3 @@ Template.Login.helpers({
     }
   }
 });
-
-
-

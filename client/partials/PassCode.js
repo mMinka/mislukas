@@ -14,12 +14,21 @@ Template.PassCode.events({
 			}else{
 				Session.set('ButtonCode',undefined);
 				var _iduser = Meteor.userId();
-				var profile = People.findOne({'owner': _iduser});
-				if(profile){
-					FlowRouter.go('home');
-				}else{
-					FlowRouter.go('settings');
-				}
+				HTTP.call('GET','http://api.minka.io:8081/api/person/meteor/'+_iduser,{
+			        headers:{
+								"Access-Control-Allow-Origin": "*"
+			        }
+			      }, function( error, response ) {
+			      if ( error ) {
+			        console.log(error);
+			      }else{
+							if(response.data){
+								FlowRouter.go('home');
+							}else{
+								FlowRouter.go('settings');
+							}
+			      }
+			  });
 			}
 		})
 	},
@@ -29,7 +38,7 @@ Template.PassCode.events({
 	      Session.set('ButtonCode',undefined);
 	    }else{
 	    	if(userInput.length == 4){
-	    		 Session.set('ButtonCode','true');	
+	    		 Session.set('ButtonCode','true');
 	    	}else{
 	    		 Session.set('ButtonCode',undefined);
 	    	}
@@ -51,5 +60,5 @@ Template.PassCode.helpers({
       return false;
     }
   }
-	
+
 });

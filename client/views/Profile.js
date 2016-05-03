@@ -1,4 +1,4 @@
-Meteor.subscribe('people');
+//Meteor.subscribe('people');
 Meteor.subscribe('userData');
 Meteor.subscribe('images');
 
@@ -12,7 +12,7 @@ Template.Profile.events({
     var address = $('[name=address]').val();
     var city = $('[name=city]').val();
     var country = $('[name=country]').val();
-    var usuarioID = Meteor.userId();
+    var usuarioID = "eufKevSQNssRx9Jq6";
     var digito1 = phone.charAt(0);
     var digito2 = phone.charAt(1);
     console.log(digito1);
@@ -61,8 +61,16 @@ Template.Profile.events({
 });
 
 Template.Profile.helpers({
-  'person': function(){
+  person: function(){
     var currentUser = Meteor.userId();
-        return People.findOne({"owner": currentUser});
+    var apiUrl = "http://api.minka.io:8081/api/person/meteor/"+currentUser;
+    HTTP.call( 'GET', apiUrl, {}, function( error, response ) {
+		  if ( error ) {
+		    console.log( error );
+		  } else {
+		    Session.set("datos",response.data);
+		  }
+		});
+    return Session.get("datos")
   }
 });

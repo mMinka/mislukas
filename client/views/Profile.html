@@ -8,8 +8,8 @@
                             <a class="showhide"><i class="fa fa-chevron-up"></i></a>
                             <a class="closebox"><i class="fa fa-times"></i></a>
                         </div>
-                        Datos de {{person.firstname}} {{person.lastname}}
                     </div>
+                    Datos de {{person.firstname}} {{person.lastname}}
 
                         <form action='' method=''>
                             <div class="panel-body col-md-5">
@@ -35,7 +35,7 @@
                             <div class="panel-body col-md-5">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Address</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1" value="{{person.address1}}" name='address'>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" value="{{person.address}}" name='address'>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">City</label>
@@ -57,5 +57,5 @@
 
         </div>
     </div>
-    
+
 </template>
